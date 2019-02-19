@@ -8,6 +8,7 @@ import java.util.Random;
 
 import com.codingame.game.view.HeroHud;
 import com.codingame.game.view.ViewController;
+import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
 import com.codingame.gameengine.core.MultiplayerGameManager;
 import com.codingame.gameengine.core.Tooltip;
@@ -124,7 +125,7 @@ public class Referee extends AbstractReferee {
 			if (player.getExpectedOutputLines() == 1) {
 				action = player.getOutputs().get(0).trim().toUpperCase();
 			}
-		} catch (Exception timeout) {
+		} catch (TimeoutException timeout) {
 			if (player.getExpectedOutputLines() == 1) {
 				player.setDeactivated();
 				gameManager.addTooltip(new Tooltip(player.getIndex(), player.getNicknameToken() + " timeout"));
